@@ -1,0 +1,42 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Diretório de dependências
+node_modules/
+
+# Arquivos de build e cache
+dist/
+build/
+.cache/
+
+# Arquivos de configuração do ambiente
+.env
+.env.*.local
+
+# Diretórios temporários
+tmp/
+temp/
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Configurações do editor
+.vscode/
+.idea/
+*.swp
+
+# Cobertura de testes
+coverage/
+
+# Arquivos do Sequelize
+migrations/
+seeders/
+
+# Arquivos gerados pelo npm
+package-lock.json
+yarn.lock
