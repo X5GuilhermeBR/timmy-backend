@@ -1,7 +1,13 @@
 const { Sequelize } = require('sequelize');
 const config = require('../config/config.js');
 
-const sequelize = new Sequelize(config.development); 
+const sequelize = new Sequelize(config.development, {
+  define: {
+    timestamps: true,
+    underscored: true,
+  },
+});
+
 const testConnection = async () => {
   try {
     await sequelize.authenticate();
