@@ -1,6 +1,6 @@
 const Member = require('../models/Member');
-const Address = require('../../addresses/models/Address');
-const User = require('../../users/models/User');
+const Address = require('../models/Address');
+const User = require('../models/User');
 
 const createMember = async (userData, memberData, addressData, transaction) => {
   const user = await User.create(userData, { transaction });
@@ -10,4 +10,19 @@ const createMember = async (userData, memberData, addressData, transaction) => {
   return { user, member, address };
 };
 
-module.exports = { createMember };
+const getAllMembers = async () => {
+  return await Member.findAll({
+    include: [
+      {
+        model: User,
+        attributes: ['email', 'activated', 'avatar_url'],
+      },
+      {
+        model: Address,
+        attributes: ['street', 'city', 'state', 'zip_code'],
+      },
+    ],
+  });
+};
+
+module.exports = { createMember, getAllMembers };
