@@ -1,21 +1,29 @@
 const express = require('express');
 const { sequelize } = require('./infrastructure/database');
 const memberRoutes = require('./routes/membersRoute');
+require('dotenv').config();
+
 const app = express();
 
-app.use(express.json()); // Para que o body da requisição seja processado como JSON
+const PORT = process.env.PORT || 3000;
 
-// Usar a rota para criação de membros
+app.use(express.json());
+
 app.use('/api', memberRoutes);
 
-// Sincronizar o banco de dados e iniciar o servidor
 sequelize.sync()
   .then(() => {
-    console.log('Banco de dados sincronizado!');
-    app.listen(3000, () => {
-      console.log('Servidor rodando na porta 3000');
+    console.log('🚀 Banco de dados sincronizado com sucesso!');
+    app.listen(PORT, () => {
+      console.log(`🌐 Servidor rodando em http://localhost:${PORT}`);
     });
   })
   .catch((error) => {
-    console.error('Erro ao sincronizar o banco de dados:', error);
+    console.error('❌ Erro ao sincronizar o banco de dados:', error);
   });
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Ocorreu um erro no servidor!' });
+});
+

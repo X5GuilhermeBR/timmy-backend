@@ -1,20 +1,19 @@
 const { Sequelize } = require('sequelize');
 const config = require('../config/config.js');
 
-const sequelize = new Sequelize(config.development, {
-  define: {
-    timestamps: true,
-    underscored: true,
-  },
-});
-
-const testConnection = async () => {
-  try {
-    await sequelize.authenticate();
-    console.log('Conexão com o banco de dados bem-sucedida!');
-  } catch (error) {
-    console.error('Erro ao conectar ao banco de dados:', error);
+const sequelize = new Sequelize(
+  config.development.database,
+  config.development.username,
+  config.development.password,
+  {
+    host: config.development.host,
+    port: config.development.port,
+    dialect: config.development.dialect,
+    define: {
+      timestamps: true,
+      underscored: true,
+    },
   }
-};
+);
 
-module.exports = { sequelize, testConnection };
+module.exports = { sequelize };
