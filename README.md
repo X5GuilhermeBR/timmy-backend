@@ -4,22 +4,15 @@
 
 - [Sobre](#sobre)
 
-- [Funcionalidades](#funcionalidades)
-
-- [Dependências](#dependências)
+- [Pilha de Tecnologia](#pilha-de-tecnologia)
 
 - [Instalação](#instalação)
 
-- [Demo](#demo)
-
-- [Paleta de Cores](#paleta-de-cores)
-
-- [Trabalhos em Aberto](#trabalhos-em-aberto)
+- [Funcionalidades](#funcionalidades)
 
 - [Desenvolvedor](#desenvolvedor)
 
 - [Licença](#licença)
-
 
 ## Sobre
 O projeto Timmy é um sistema de gestão de igreja, criado com o propósito de facilitar a administração e o gerenciamento de dados de membros de uma congregação. A inspiração para o nome vem do livro de Timóteo, que fala sobre o corpo e a liderança da Igreja, refletindo princípios de união, cuidado e responsabilidade mútua. Além disso, Timmy é também um apelido carinhoso do meu filho, o que traz um toque pessoal e significativo ao projeto.
