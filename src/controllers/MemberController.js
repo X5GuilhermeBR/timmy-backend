@@ -1,5 +1,5 @@
 const { sequelize } = require('../infrastructure/database');
-const { createMember, getAllMembers } = require('../repositories/MemberRepository');
+const { createMember, getAllMembers, deactivateMember } = require('../repositories/MemberRepository');
 
 class MemberController {
   static async createMember(req, res) {
@@ -35,6 +35,29 @@ class MemberController {
     } catch (error) {
       res.status(500).json({
         message: 'Erro ao recuperar membros',
+        error: error.message,
+      });
+    }
+  }
+
+  static async deactivateMember(req, res) {
+    const { id } = req.params;
+
+    try {
+      const rowsUpdated = await deactivateMember(id);
+
+      if (rowsUpdated === 0) {
+        return res.status(404).json({
+          message: `Membro com ID ${id} não encontrado.`,
+        });
+      }
+
+      res.status(200).json({
+        message: `Membro com ID ${id} foi desativado com sucesso.`,
+      });
+    } catch (error) {
+      res.status(500).json({
+        message: 'Erro ao desativar o membro.',
         error: error.message,
       });
     }

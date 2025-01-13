@@ -11,6 +11,7 @@ const createMember = async (userData, memberData, addressData, transaction) => {
 
   return { user, member, address };
 };
+
 const getAllMembers = async () => {
   return await Member.findAll({
     include: [
@@ -26,4 +27,14 @@ const getAllMembers = async () => {
   });
 };
 
-module.exports = { createMember, getAllMembers };
+const deactivateMember = async (id) => {
+  console.log(`Desativando membro com ID: ${id}`);
+  const [rowsUpdated] = await Member.update(
+    { is_actived: false },
+    { where: { id, is_actived: true } }
+  );
+  console.log(`Linhas atualizadas: ${rowsUpdated}`);
+  return rowsUpdated;
+};
+
+module.exports = { createMember, getAllMembers, deactivateMember };

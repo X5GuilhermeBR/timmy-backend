@@ -18,6 +18,10 @@ const Member = sequelize.define('Member', {
   baptism_date: {
     type: DataTypes.DATE,
   },
+  is_actived: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
+  },
 }, {
   tableName: 'members',
   timestamps: true,
