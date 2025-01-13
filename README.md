@@ -1,4 +1,4 @@
-Timmy - Sistema de Gestão de Igrejas (Backend)
+#Timmy - Sistema de Gestão de Igrejas (Backend)
 
 ## Sumário
 
