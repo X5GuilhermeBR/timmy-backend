@@ -1,5 +1,5 @@
 const { sequelize } = require('../infrastructure/database');
-const { createMember, getAllMembers, deactivateMember } = require('../repositories/MemberRepository');
+const { createMember, getAllMembers, deactivateMember, updateMember } = require('../repositories/MemberRepository');
 
 class MemberController {
   static async createMember(req, res) {
@@ -58,6 +58,35 @@ class MemberController {
     } catch (error) {
       res.status(500).json({
         message: 'Erro ao desativar o membro.',
+        error: error.message,
+      });
+    }
+  }
+
+  static async updateMember(req, res) {
+    const { id } = req.params;
+    const { full_name, date_of_birth, marital_status, baptism_date } = req.body;
+
+    try {
+      const updatedMember = await updateMember(id, {
+        full_name,
+        date_of_birth,
+        marital_status,
+        baptism_date,
+      });
+
+      if (!updatedMember) {
+        return res.status(404).json({ message: 'Membro não encontrado.' });
+      }
+
+      res.status(200).json({
+        message: 'Membro atualizado com sucesso!',
+        data: updatedMember,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({
+        message: 'Erro ao atualizar o membro.',
         error: error.message,
       });
     }

@@ -33,8 +33,19 @@ const deactivateMember = async (id) => {
     { is_actived: false },
     { where: { id, is_actived: true } }
   );
-  console.log(`Linhas atualizadas: ${rowsUpdated}`);
   return rowsUpdated;
 };
 
-module.exports = { createMember, getAllMembers, deactivateMember };
+const updateMember = async (id, updateData) => {
+  const member = await Member.findByPk(id);
+
+  if (!member) {
+    return null;
+  }
+
+  const updatedMember = await member.update(updateData);
+
+  return updatedMember;
+};
+
+module.exports = { createMember, getAllMembers, deactivateMember, updateMember };
