@@ -59,7 +59,7 @@ Execute a aplicação:
 | Atualizar Membro                     | ✅ Concluído     |
 | Deletar Membro (Lógico)              | ✅ Concluído     |
 | Criar Usuário                        | ✅ Concluído     |
-| Criar Endereço                       | 🚧 Em Progresso  |
+| Criar Endereço                       | ✅ Concluído  |
 | Listar Endereços                     | 🚧 Em Progresso |
 | Atualizar Endereço                   | 🚧 Em Progresso |
 | Deletar Membro (Físico)              | 🚧 Em Progresso |
