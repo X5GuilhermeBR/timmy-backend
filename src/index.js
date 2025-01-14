@@ -1,15 +1,9 @@
 const express = require('express');
 const { sequelize } = require('./infrastructure/database');
 const memberRoutes = require('./routes/membersRoute');
+const addressRoutes = require('./routes/AddressRoute');
+require('./models/Associations');
 require('dotenv').config();
-
-const User = require('./models/User');
-const Member = require('./models/Member');
-const Address = require('./models/Address');
-
-Member.belongsTo(User, { foreignKey: 'user_id' });
-Member.hasMany(Address, { foreignKey: 'member_id' });
-Address.belongsTo(Member, { foreignKey: 'member_id' });
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.use('/api', memberRoutes);
+app.use('/api', addressRoutes);
 
 sequelize.sync()
   .then(() => {
