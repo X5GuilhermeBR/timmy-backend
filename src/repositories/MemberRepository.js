@@ -1,6 +1,8 @@
 const Member = require('../models/Member');
 const Address = require('../models/Address');
 const User = require('../models/User');
+const { Sequelize } = require('sequelize');
+
 
 const createMember = async (userData, memberData, transaction) => {
   const user = await User.create(userData, { transaction });
@@ -12,16 +14,19 @@ const createMember = async (userData, memberData, transaction) => {
 
 const getAllMembers = async () => {
   return await Member.findAll({
+    attributes: [
+      'full_name',
+      'phone_number',
+      [Sequelize.col('User.activated'), 'activated'],
+      [Sequelize.col('User.avatar_url'), 'avatar_url'],
+    ],
     include: [
       {
         model: User,
-        attributes: ['email', 'activated', 'avatar_url'],
-      },
-      {
-        model: Address,
-        attributes: ['street', 'city', 'state', 'zip_code'],
+        attributes: [],
       },
     ],
+    raw: true,
   });
 };
 
