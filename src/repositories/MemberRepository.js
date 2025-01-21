@@ -1,5 +1,4 @@
 const Member = require('../models/Member');
-const Address = require('../models/Address');
 const User = require('../models/User');
 const { Sequelize } = require('sequelize');
 
@@ -15,6 +14,7 @@ const createMember = async (userData, memberData, transaction) => {
 const getAllMembers = async () => {
   return await Member.findAll({
     attributes: [
+      'id',
       'full_name',
       'phone_number',
       [Sequelize.col('User.activated'), 'activated'],
@@ -51,4 +51,4 @@ const updateMember = async (id, updateData) => {
   return updatedMember;
 };
 
-module.exports = { createMember, getAllMembers, deactivateMember, updateMember };
+module.exports = { createMember, getMemberById, getAllMembers, deactivateMember, updateMember };
