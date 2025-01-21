@@ -51,4 +51,4 @@ const updateMember = async (id, updateData) => {
   return updatedMember;
 };
 
-module.exports = { createMember, getMemberById, getAllMembers, deactivateMember, updateMember };
+module.exports = { createMember, getAllMembers, deactivateMember, updateMember };
