@@ -1,5 +1,5 @@
 const { sequelize } = require('../infrastructure/database');
-const { createMember, getAllMembers, deactivateMember, updateMember } = require('../repositories/MemberRepository');
+const { createMember, getMemberById, getAllMembers, deactivateMember, updateMember } = require('../repositories/MemberRepository');
 
 class MemberController {
   static async createMember(req, res) {
@@ -24,6 +24,23 @@ class MemberController {
       });
     }
   }
+
+  static async getMemberById (req, res) {
+    const { id } = req.params;
+  
+    try {
+      const member = await getMemberById(id); 
+  
+      if (!member) {
+        return res.status(404).json({ error: 'Member not found' });
+      }
+  
+      return res.status(200).json(member);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'An error occurred while fetching the member' });
+    }
+  };
 
   static async getAllMembers(req, res) {
     try {

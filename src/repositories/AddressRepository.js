@@ -1,4 +1,4 @@
-const Address = require('../models/Address');
+const { Address } = require('../models');
 
 class AddressRepository {
   async createAddress({ member_id, street, number, city, state, zip_code, country }) {

@@ -9,6 +9,36 @@ const createMember = async (userData, memberData, transaction) => {
   return { user, member };
 };
 
+const getMemberById = async (id) => {
+  try {
+    const member = await Member.findOne({
+      where: { id },
+      attributes: [
+        'id',
+        'full_name',
+        'date_of_birth',
+        'marital_status',
+        'baptism_date',
+        'is_actived',
+        [Sequelize.col('User.email'), 'email'],
+        [Sequelize.col('User.activated'), 'activated'],
+        [Sequelize.col('User.avatar_url'), 'avatar_url'],
+      ],
+      include: [
+        {
+          model: User,
+          attributes: [], 
+        }
+      ],
+      raw: true,
+    });
+
+    return member || null;
+  } catch (error) {
+    throw new Error('Error fetching member: ' + error.message);
+  }
+};
+
 const getAllMembers = async () => {
   return await Member.findAll({
     attributes: [
@@ -49,4 +79,4 @@ const updateMember = async (id, updateData) => {
   return updatedMember;
 };
 
-module.exports = { createMember, getAllMembers, deactivateMember, updateMember };
+module.exports = { createMember,  getMemberById, getAllMembers, deactivateMember, updateMember };
