@@ -1,4 +1,3 @@
-// src/models/address.js
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../infrastructure/database');
 

@@ -2,7 +2,6 @@ const express = require('express');
 const { sequelize } = require('./infrastructure/database');
 const memberRoutes = require('./routes/membersRoute');
 const addressRoutes = require('./routes/AddressRoute');
-require('./models/Associations');
 require('dotenv').config();
 const cors = require('cors');
 

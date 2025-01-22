@@ -1,7 +1,5 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../infrastructure/database');
-const User = require('./user');
-const Address = require('./address'); 
 
 const Member = sequelize.define('Member', {
   full_name: {
@@ -27,8 +25,5 @@ const Member = sequelize.define('Member', {
   tableName: 'members',
   timestamps: true,
 });
-
-Member.hasMany(Address, { foreignKey: 'member_id' });
-Member.belongsTo(User, { foreignKey: 'user_id' });
 
 module.exports = Member;

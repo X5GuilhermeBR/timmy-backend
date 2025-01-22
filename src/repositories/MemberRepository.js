@@ -1,7 +1,5 @@
-const Member = require('../models/Member');
-const User = require('../models/User');
+const { Member, User } = require('../models');
 const { Sequelize } = require('sequelize');
-
 
 const createMember = async (userData, memberData, transaction) => {
   const user = await User.create(userData, { transaction });
