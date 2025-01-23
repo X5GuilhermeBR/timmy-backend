@@ -45,7 +45,7 @@ const getAllMembers = async () => {
       'id',
       'full_name',
       'phone_number',
-      [Sequelize.col('User.activated'), 'activated'],
+      'is_actived',
       [Sequelize.col('User.avatar_url'), 'avatar_url'],
     ],
     include: [
