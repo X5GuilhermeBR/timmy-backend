@@ -1,5 +1,5 @@
 const { sequelize } = require('../infrastructure/database');
-const { createMember, getMemberById, getAllMembers, deactivateMember, updateMember } = require('../repositories/MemberRepository');
+const { createMember, getMemberById, getAllMembers, toggleMemberStatus, updateMember } = require('../repositories/MemberRepository');
 
 class MemberController {
   static async createMember(req, res) {
@@ -57,24 +57,31 @@ class MemberController {
     }
   }
 
-  static async deactivateMember(req, res) {
+  static async toggleMemberStatus(req, res) {
     const { id } = req.params;
-
+    const { isActive } = req.body;
+  
+    if (typeof isActive !== 'boolean') {
+      return res.status(400).json({
+        message: "O campo 'isActive' é obrigatório e deve ser um valor booleano (true ou false).",
+      });
+    }
+  
     try {
-      const rowsUpdated = await deactivateMember(id);
-
+      const rowsUpdated = await toggleMemberStatus(id, isActive);
+  
       if (rowsUpdated === 0) {
         return res.status(404).json({
           message: `Membro com ID ${id} não encontrado.`,
         });
       }
-
+  
       res.status(200).json({
-        message: `Membro com ID ${id} foi desativado com sucesso.`,
+        message: `Membro com ID ${id} foi ${isActive ? 'ativado' : 'desativado'} com sucesso.`,
       });
     } catch (error) {
       res.status(500).json({
-        message: 'Erro ao desativar o membro.',
+        message: 'Erro ao atualizar o status do membro.',
         error: error.message,
       });
     }

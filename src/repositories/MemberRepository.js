@@ -16,6 +16,7 @@ const getMemberById = async (id) => {
       attributes: [
         'id',
         'full_name',
+        'phone_number',
         'date_of_birth',
         'marital_status',
         'baptism_date',
@@ -58,15 +59,14 @@ const getAllMembers = async () => {
   });
 };
 
-const deactivateMember = async (id) => {
-  console.log(`Desativando membro com ID: ${id}`);
+const toggleMemberStatus = async (id, isActive) => {
+  console.log(`${isActive ? 'Ativando' : 'Desativando'} membro com ID: ${id}`);
   const [rowsUpdated] = await Member.update(
-    { is_actived: false },
-    { where: { id, is_actived: true } }
+    { is_actived: isActive },
+    { where: { id } }
   );
   return rowsUpdated;
 };
-
 const updateMember = async (id, updateData) => {
   const member = await Member.findByPk(id);
 
@@ -79,4 +79,4 @@ const updateMember = async (id, updateData) => {
   return updatedMember;
 };
 
-module.exports = { createMember,  getMemberById, getAllMembers, deactivateMember, updateMember };
+module.exports = { createMember,  getMemberById, getAllMembers, toggleMemberStatus, updateMember };
