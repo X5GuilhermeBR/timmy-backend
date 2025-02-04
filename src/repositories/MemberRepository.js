@@ -55,6 +55,10 @@ const getAllMembers = async () => {
         attributes: [],
       },
     ],
+    order: [
+      ['is_actived', 'DESC'],
+      ['full_name', 'ASC'],
+    ],
     raw: true,
   });
 };
