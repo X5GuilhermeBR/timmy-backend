@@ -67,6 +67,7 @@ const toggleMemberStatus = async (id, isActive) => {
   );
   return rowsUpdated;
 };
+
 const updateMember = async (id, updateData) => {
   const member = await Member.findByPk(id);
 

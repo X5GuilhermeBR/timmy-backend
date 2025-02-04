@@ -17,6 +17,10 @@ const Member = sequelize.define('Member', {
   baptism_date: {
     type: DataTypes.DATE,
   },
+  phone_number: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   is_actived: {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
