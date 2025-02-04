@@ -54,10 +54,10 @@ Execute a aplicação:
 ## Funcionalidades
 | **Features**                  | **Status**       |
 |--------------------------------------|------------------|
-| Criar Membro                         | ✅ Concluído     |
+| Criar Membro                          
 | Listar Todos os Membros              | ✅ Concluído     |
 | Atualizar Membro                     | ✅ Concluído     |
-| Deletar Membro (Lógico)              | ✅ Concluído     |
+| Desativar Membro (Lógico)            | ✅ Concluído     |
 | Criar Usuário                        | ✅ Concluído     |
 | Criar Endereço                       | ✅ Concluído  |
 | Listar Endereços                     | 🚧 Em Progresso |
