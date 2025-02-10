@@ -10,6 +10,10 @@ const Address = sequelize.define('Address', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  complement: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   city: {
     type: DataTypes.STRING,
     allowNull: false,
