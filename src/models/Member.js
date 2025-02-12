@@ -6,6 +6,10 @@ const Member = sequelize.define('Member', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  gender: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   date_of_birth: {
     type: DataTypes.DATE,
     allowNull: false,
