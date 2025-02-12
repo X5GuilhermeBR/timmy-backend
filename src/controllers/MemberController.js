@@ -89,11 +89,12 @@ class MemberController {
 
   static async updateMember(req, res) {
     const { id } = req.params;
-    const { full_name, date_of_birth, marital_status, baptism_date, phone_number } = req.body;
+    const { full_name, gender, date_of_birth, marital_status, baptism_date, phone_number } = req.body;
 
     try {
       const updatedMember = await updateMember(id, {
         full_name,
+        gender,
         date_of_birth,
         marital_status,
         baptism_date,
