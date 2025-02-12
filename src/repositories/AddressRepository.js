@@ -15,6 +15,10 @@ class AddressRepository {
 
     return newAddress.get({ plain: true });
   }
+
+  async getAddressByMemberId(memberId) {
+    return await Address.findOne({ where: { member_id: memberId } });
+  }
 }
 
 module.exports = new AddressRepository();

@@ -30,6 +30,26 @@ class AddressController {
       });
     }
   }
+
+  async getByMemberId(req, res) {
+    try {
+      const { userId } = req.params;
+
+      const address = await AddressRepository.getAddressByMemberId(userId);
+
+      if (!address) {
+        return res.status(404).json({ message: 'Endereço não encontrado' });
+      }
+
+      return res.status(200).json(address);
+    } catch (error) {
+      console.error('Erro ao buscar endereço:', error);
+      return res.status(500).json({
+        message: 'Erro ao buscar endereço',
+        error: error.message,
+      });
+    }
+  }
 }
 
 module.exports = new AddressController();
