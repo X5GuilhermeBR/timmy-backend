@@ -16,6 +16,7 @@ const getMemberById = async (id) => {
       attributes: [
         'id',
         'full_name',
+        'gender',
         'phone_number',
         'date_of_birth',
         'marital_status',
