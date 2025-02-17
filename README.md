@@ -59,9 +59,9 @@ Execute a aplicação:
 | Atualizar Membro                     | ✅ Concluído     |
 | Desativar Membro (Lógico)            | ✅ Concluído     |
 | Criar Usuário                        | ✅ Concluído     |
-| Criar Endereço                       | ✅ Concluído  |
-| Listar Endereços                     | 🚧 Em Progresso |
-| Atualizar Endereço                   | 🚧 Em Progresso |
+| Criar Endereço                       | ✅ Concluído     |
+| Listar Endereços Por Id do Membro    | ✅ Concluído     |
+| Atualizar Endereço                   | ✅ Concluído     |
 | Deletar Membro (Físico)              | 🚧 Em Progresso |
 | Autenticação                         | 🚧 Em Progresso |
 
